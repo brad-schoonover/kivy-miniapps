@@ -1,0 +1,37 @@
+<SampleWidget>:
+	Scatter:
+		size: self.size
+		canvas.after:
+			Color:
+				rgba: root.colo
+			Rectangle:
+				pos: 100,100
+				size: 200,200
+
+	TextInput:
+		id: id1
+		text: 'Helo'
+		font_size: 150
+		height: 100
+		size_hint_y: None
+	
+	FloatLayout:
+	
+		Scatter:
+			center: self.parent.center
+			size_hint: None , None
+			size: dg.size
+			Label:
+				id: dg
+				font_size:150
+				height: 200
+				text: id1.text
+				size: self.texture_size
+				size_hint_y: None		
+				canvas:
+					Color: 
+						rgba: 1,1,1,1
+					Rectangle:
+						pos: self.pos
+						size: self.size
+

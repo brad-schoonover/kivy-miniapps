@@ -1,0 +1,39 @@
+<SampleWidget>:
+	
+	orientation: 'vertical'
+
+	TextInput:
+		id:id1
+		font_size:50
+		height: 50
+		text: 'OM'
+		size_hint_y: None
+		on_text: root.sample()
+	
+	FloatLayout:
+		Scatter:
+			Label:
+				id:id2
+				text: id1.text
+				fonr_size: 150
+				color: root.colour
+				height: 100		
+							
+	BoxLayout:
+		orientation: 'horizontal'
+		size_hint_y: None
+		height: 50
+		
+		Label:
+			id:id3
+			text: id1.text[:3][::-1]
+			font_size: 150
+			color: root.colour
+			
+		Label:
+			id:id4
+			text: id1.text[-3:]
+			font_size: 200
+			color:root.colour
+			
+			
