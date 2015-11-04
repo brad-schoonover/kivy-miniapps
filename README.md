@@ -55,6 +55,6 @@ Required Files: Button.py, button.kv, GetStartedButtonD.png, GetStartedButtonN.p
 
 Required Files: Screens.py, screen.kv
 
-6. Sound Alarm
+6: Sound Alarm
 
 Required Files: Alarm.py, alarm.kv, RedAlart.wav
