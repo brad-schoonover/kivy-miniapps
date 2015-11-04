@@ -1,0 +1,29 @@
+#In the alarm button widget we create the two buttons
+
+<AlarmButton>:
+
+	FloatLayout:
+
+#we initiate the float and boxlayout for the buttons to be created in.
+
+		BoxLayout:
+		
+			orientation:'horizontal'
+			size:200, 200, 
+			size_hint:None, None
+			pos:550, 200
+
+#this button as the function on_press which is set to root.start(), which goes in to the AlarmButton class and the 
+#start definition in the widget to start the alarm sound to play and loop.
+			
+			Button:
+			
+				text:'Start alarm'
+				on_press: root.start()
+
+#This button tells that sound to stop through soundloader stop function through root.start.sound.stop()
+				
+			Button:
+			
+				text:'Stop alarm'
+				on_press: root.start.sound.stop()
