@@ -1,0 +1,318 @@
+#Start of the MiniApp MiscWidgets.py Kivy file
+#------------------------------------------------------------------------------ = end of a particular screen
+#Screen of the DropDown
+
+<DropDowns>:
+	id: drop
+
+#assigns top_layout (which is used in the python file), to the topLayout that is defined lower in this file
+
+    top_layout: topLayout
+
+	FloatLayout:
+	
+#like in the last MiniApp we set up the buttons to transition between the screens
+	
+		BoxLayout:
+		
+			orientation:'horizontal'
+			size: 300, 50 
+			size_hint:'None', 'None'
+			pos:200, 400
+			
+    		Button:
+        		text: 'CheckBoxes'
+        		on_press: root.manager.current = 'check'
+
+    		Button:
+        		text: 'Sliders'
+        		on_press: root.manager.current = 'slide'
+        		
+			Button:
+        		text: 'Switches'
+        		on_press: root.manager.current = 'switch'
+ 
+ #This BoxLayout is used to create the topLayout, so that it is pressed on top of the app window       		
+
+    BoxLayout:
+    
+        id: topLayout
+        #cols: 2
+        size_hint: 1, .05
+        pos_hint: {'x': 0, 'y': .95}
+        
+#This is the main button that will drop the kivy dropdown menu, with the use of on_release attribute
+#the drop_down.open was assigned in the python file to the customdropdown
+        
+        Button:
+        
+            id: btn_dd
+            text: 'DropDown_Kv'
+            on_release: root.drop_down.open(self)
+
+#the CustomDropDown is the kivy design of the drop down with a button, label, button order
+
+<CustomDropDown>:
+
+    Button:
+    
+        text: 'My first Item'
+        size_hint_y: None
+        height: 44
+        on_release: root.select('item1')
+ 
+ #the label is used for a item that can't be selected in the dropdown menu for it is not a button (makes sense right?)
+        
+    Label:
+    
+        text: 'Unselectable item'
+        size_hint_y: None
+        height: 44
+        
+    Button:
+    
+        text: 'My second Item'
+        size_hint_y: None
+        height: 44
+        on_release: root.select('item2')
+#--------------------------------------------------------------------
+#start of CheckBoxes screen
+
+<CheckBoxes>:
+
+	FloatLayout:
+
+#Buttons for the screen management 
+	
+		BoxLayout:
+		
+			orientation:'horizontal'
+			size:300, 50 
+			size_hint:'None', 'None'
+			pos:200, 500
+			
+    		Button:
+        		text: 'DropDown'
+        		on_press: root.manager.current = 'drop'
+
+    		Button:
+        		text: 'Sliders'
+        		on_press: root.manager.current = 'slide'
+        		
+			Button:
+        		text: 'Switches'
+        		on_press: root.manager.current = 'switch'
+        		
+#Creates a 3 column grid that fills in the order of label followed by 2 CheckBoxes, once filled it will move on to a new row
+	
+		GridLayout:
+
+			cols: 3
+			spacing: '8dp'
+			size_hint: .5, None
+			height: self.minimum_height
+
+			Label:
+				text: 'Checkbox'
+
+			CheckBox:
+				size_hint_y: None
+				height: '48dp'
+
+			CheckBox:
+				size_hint_y: None
+				height: '48dp'
+
+			Label:
+				text: 'CheckBox with group'
+			
+			CheckBox:
+				size_hint_y: None
+				height: '48dp'
+				
+#The group attribute links the checkboxes together that will changes the selection of one when they other is pressed		
+
+				group: 'Grouped'
+			
+			CheckBox:
+				size_hint_y: None
+				height: '48dp'
+				group: 'Grouped'
+				
+#-----------------------------------------------------------------
+#Start of Sliders screen  
+       	
+<Sliders>:
+
+	FloatLayout:
+
+#transitions between screens
+	
+		BoxLayout:
+			orientation:'horizontal'
+			size:300, 50 
+			size_hint:'None', 'None'
+			pos:50, 500
+			
+    		Button:
+        		text: 'DropDown'
+        		on_press: root.manager.current = 'drop'
+
+    		Button:
+        		text: 'CheckBoxes'
+        		on_press: root.manager.current = 'check'
+        		
+			Button:
+        		text: 'Switches'
+        		on_press: root.manager.current = 'switch'
+        		
+# the first slider is a horizontal slider with a label that updates to the value of the slider
+         		
+	BoxLayout:
+        	
+		size_hint_y: None
+		
+#this '48dp' is a different sizing method, that depends on the dpi of the screen the application runs on. px = dp*(dpi/160)
+	
+		height: '48dp'
+		pos: 50, 300
+			
+		Label:
+			text: 'Default'
+				
+		Slider:
+			id: s1
+				
+		Label:
+		
+#updates the label
+		
+			text: '{}'.format(s1.value)
+
+#This boxlayout holds the horizontal stepped slider that moves in whole values at increments of 2 
+				
+	BoxLayout:
+			
+		size_hint_y: None
+		height: '48dp'
+		pos: 50, 200
+				
+		Label:
+				
+			text: 'Stepped'
+				
+		Slider:
+				
+			id: s2
+			
+#stepping attribute
+			
+			step: 2
+				
+		Label:
+				
+			text: '{}'.format(s2.value)
+			
+#this combo AnchorLayout and Gridlayout sets 2 columns for vertical sliders that have the equal values to the previous sliders we defined 
+				
+	AnchorLayout:
+			
+		size_hint_y: None
+		height: '100dp'
+		pos: 10, 350
+				
+		GridLayout:
+				
+			cols: 2
+			spacing: '8dp'
+			size_hint_x: None
+			width: self.minimum_width
+
+#this slider is equal to the default slider 
+					
+			Slider:
+					
+				size_hint_x: None
+				width: '48dp'
+				orientation: 'vertical'
+				value: s1.value
+				on_value: s1.value = self.value
+
+#this slider is equal to the stepped slider
+					
+			Slider:
+				
+				size_hint_x: None
+				width: '48dp'
+				orientation: 'vertical'
+				step: 2
+				value: s2.value
+				on_value: s2.value = self.value
+
+#-----------------------------------------------------------------
+#Start of Switches Screen
+        		
+<Switches>:
+
+	FloatLayout:
+
+#screen Transitions
+	
+		BoxLayout:
+		
+			orientation:'horizontal'
+			size:300, 50 
+			size_hint:'None', 'None'
+			pos:200, 500
+			
+    		Button:
+        		text: 'DropDown'
+        		on_press: root.manager.current = 'drop'
+
+    		Button:
+        		text: 'CheckBoxes'
+        		on_press: root.manager.current = 'check'
+        		
+			Button:
+        		text: 'Sliders'
+        		on_press: root.manager.current = 'slide'
+        		
+#The Switches are very straight forword, in the fact that you can set active or off with True/False commands
+#and disable or enable the switches with commands.
+
+	BoxLayout:
+		size_hint_y: None
+		height: '48dp'
+		pos: 50, 400
+		
+		Label:
+			text: 'Switch normal'
+			
+		Switch:
+		
+	BoxLayout:
+		size_hint_y: None
+		height: '48dp'
+		pos: 50, 350
+		
+		Label:
+			text: 'Switch active'
+			
+		Switch:
+			active: True
+		
+	BoxLayout:
+	
+		size_hint_y: None
+		height: '48dp'
+		pos: 50, 300
+		
+		Label:
+			text: 'Switch off & disabled'
+			
+		Switch:
+			disabled: True
+			active: False
+		
+
+
