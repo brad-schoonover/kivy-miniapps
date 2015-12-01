@@ -14,24 +14,6 @@ Kivy API: http://kivy.org/docs/api-kivy.html
 
 Key features:
 
-Apps and Widgets
-Drawing canvas
-Basic Shape functions
-Layouts
-Dynamic Color and Labels
-Multiple Screens and Screen Manager
-Buttons
-Sliders
-Switches
-Checkboxes
-Bubbles
-DropDowns
-Graphing
-File Choosers
-Progress Bars
-Animations
-Alarms with sound
-Advance Graphics (i.e. Textures and Shaders)
 Apps and Widgets,
 Drawing canvas,
 Basic Shape functions
