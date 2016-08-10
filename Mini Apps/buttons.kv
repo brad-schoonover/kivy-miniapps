@@ -1,0 +1,51 @@
+<Buttons>:
+
+#The float layout can be applied to any layout type, and is used to move more rigid layouts or, more generally,
+#any other objects anywhere with out any restrictions.
+			
+	FloatLayout:
+
+#We apply the float layout to the Boxlayout that holds and dictates our buttons.
+#Box layout controls size and position of the child widgets placed inside of it, it orientation where the child
+#Widgets are placed next to each other. These orientations can be vertical (children with be above or below each other)
+#and Horizontal will go the the width of the window from left to right.
+#we give it what to size of the layout the children will be placed in and its initial position and then places the
+# next button to the right of the first one. The size_hint is set to (None, None), this is the size of the children relative to the layout size.     
+
+		BoxLayout:
+
+#we are goin to create 2 buttons in the space of the (200,100) layout so that means the buttons will be 100 pixels tall and 100 pixels wide 
+		
+			orientation: 'horizontal'
+			size: 200, 100
+			size_hint: 'None', 'None'
+			pos: 600, 500
+			
+#We create a button widget in the boxlayout class, we do not have to give in a size or pos since it will be fitted inside of the layout 
+			
+    		Button:
+    		
+#I have commented out the background_normal and background_down, they are commands to change the button look for normal and when its pressed.
+#It does this by telling it to use a picture that is in the local folder. The images listed are included so if you want to uncomment to see what happens
+    		
+    			#ckground_normal: 'GetStartedButtonN.png'
+        		#background_down: 'GetStartedButtonD.png'
+        		
+#we chang the text to what ever we want it to be, and under it is a commented out is font_name which changes the font typed used
+#I didn't include this font but you can change it to whatever font you want, as long is its the fonts exact name. 
+        		
+        		text: 'Button 1'
+        		
+        		#font_name: 'Oswald-Bold'
+        		
+#We go head and make the second button the exact same way but make the text button 2.
+
+    		Button:
+    		
+    			#background_normal: 'GetStartedButtonN.png'
+        		#background_down: 'GetStartedButtonD.png'
+        		
+        		text: 'Button 2'
+        		
+        		#font_name: 'Oswald-Bold'
+        		
