@@ -14,9 +14,9 @@ Choices = QMessageBox.question(win, 'Message', "Is Kivy well documented?", QMess
  # Adds text to the buttons in Choices as yes and no
  
 if Choices == QMessageBox.Yes:
-    print 'Yes.'
+    print ('Yes.')
 else:
-    print 'No.'        
+    print ('No.')        
  
 win.show() 
  
